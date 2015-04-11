@@ -6,7 +6,7 @@
 /*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/11 23:40:56 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/11 23:45:06 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void		GameEngine::createNewWin(void)
 
 	localWin = newwin(this->_height, this->_width, this->_startY, this->_startX);
 	box(localWin, 0 , 0);		/* 0, 0 gives default characters for the vertical and horizontal lines*/
-	wborder(this->_win, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h');
 	wrefresh(localWin);
+	wborder(this->_win, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h');
 
 	this->_win = localWin;
 }
