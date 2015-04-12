@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Enemy.cpp                                          :+:      :+:    :+:   */
+/*   Asteroids.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 20:22:35 by wburgos          ###   ########.fr       */
+/*   Created: 2015/04/12 20:19:44 by wburgos           #+#    #+#             */
+/*   Updated: 2015/04/12 21:10:47 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Enemy.hpp"
+#include "Asteroids.hpp"
 
-Enemy		&Enemy::operator=(Enemy const &rhs)
+Asteroids		&Asteroids::operator=(Asteroids const &rhs)
 {
 	AEntities::operator=(rhs);
 	return *this;
 }
 
-Enemy::Enemy(WINDOW const * win, int x, int y): AEntities(win, x, y, '#')
+Asteroids::Asteroids(WINDOW const * win, int x, int y): AEntities(win, x, y, 'O')
 {
 }
 
-Enemy::~Enemy(void)
+Asteroids::~Asteroids(void)
 {
 }
 
-Enemy::Enemy(Enemy const &src): AEntities(src)
+Asteroids::Asteroids(Asteroids const &src): AEntities(src)
 {
 }
 
-void				Enemy::shoot(void)
-{
-	_missile = new Missiles(_win, _x - 3, _y, -1);
-}
-
-void				Enemy::movement(void)
+void				Asteroids::movement(void)
 {
 	mvaddch(_y, _x, ' ');
 	_x -= 1;
@@ -43,12 +38,8 @@ void				Enemy::movement(void)
 	move(0, 0);
 }
 
-void				Enemy::update(void)
+void				Asteroids::update(void)
 {
-	_missile = 0;
-
 	if (AEntities::loopCount == 1)
 		movement();
-	else if (rand() % 500 < 5)
-		shoot();
 }

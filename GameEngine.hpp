@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 20:10:26 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 20:21:50 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <cstdlib>
 # include "Player.hpp"
 # include "Enemy.hpp"
+# include "Asteroids.hpp"
 
 # define ENTITIES_MAX 1000
 

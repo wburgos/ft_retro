@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 20:10:30 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 21:11:36 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ bool				GameEngine::render(void)
 	if (rand() % 300 < 5)
 	{
 		int enY = rand() % _winheight;
+		int asY = rand() % _winheight;
 		addEntity(new Enemy(_win, _winwidth, (enY == 0) ? 1 : enY));
+		addEntity(new Asteroids(_win, _winwidth, (asY == 0) ? 1 : asY));
 	}
 	if (!updateEntities())
 		return (false);
@@ -130,7 +132,7 @@ void				GameEngine::entityColision(void)
 		{
 			if (_entities[i] && _entities[j] && _entities[i]->impact(_entities[j]))
 			{
-				_score += 50;
+				_score += 100;
 				deleteEntity(_entities[i]);
 				deleteEntity(_entities[j]);
 			}
