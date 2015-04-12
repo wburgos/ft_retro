@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 17:24:25 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 18:43:06 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 GameEngine::GameEngine(void)
 {
 	initscr();
-	halfdelay(1);
+	nodelay(stdscr, TRUE);
 	keypad(stdscr, TRUE);
 	noecho();
 	getmaxyx(stdscr, _winheight, _winwidth);
@@ -44,7 +44,11 @@ GameEngine		&GameEngine::operator=(GameEngine const &src)
 
 bool				GameEngine::render(void)
 {
-	if (rand() % 100 < 20)
+	usleep(10000);
+	if (AEntities::loopCount == 2)
+		AEntities::loopCount = 0;
+	AEntities::loopCount++;
+	if (rand() % 500 < 5)
 		addEntity(new Enemy(_win, _winwidth, (rand() % _winheight)));
 	updateEntities();
 	refresh();
@@ -61,7 +65,10 @@ void				GameEngine::addEntity(AEntities * entity)
 	for (int i = 0; i < ENTITIES_MAX; i++)
 	{
 		if (_entities[i] == 0)
+		{
 			_entities[i] = entity;
+			return ;
+		}
 	}
 }
 
@@ -84,8 +91,12 @@ void				GameEngine::deleteEntity(AEntities * entity)
 {
 	for (int i = 0; i < ENTITIES_MAX; i++)
 	{
-		if (_entities[i] == entity)
+		if ( _entities[i] == entity)
+		{
+			// delete _entities[i];
 			_entities[i] = 0;
+			return ;
+		}
 	}
 }
 
@@ -93,17 +104,16 @@ void				GameEngine::colisionManager(void)
 {
 	for (int i = 0; i < ENTITIES_MAX; i++)
 	{
-		if (_entities[i])
+		for (int j = i + 1; j < ENTITIES_MAX; j++)
 		{
-			for (int j = i + 1; j < ENTITIES_MAX; j++)
+			if (_entities[i] && _entities[j] && _entities[i]->impact(_entities[j]))
 			{
-				if (_entities[j] && _entities[i]->impact(_entities[j]))
-				{
-					deleteEntity(_entities[i]);
-					deleteEntity(_entities[j]);
-				}
+				deleteEntity(_entities[i]);
+				deleteEntity(_entities[j]);
 			}
 		}
+		if (_entities[i] && _entities[i]->getX() < 0)
+			deleteEntity(_entities[i]);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 16:48:56 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 18:27:39 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ protected:
 	int					_winwidth, _winheight;
 	char				_char;
 	AEntities * 		_missile;
-	static int			_loopCount;
 
 public:
 
@@ -46,6 +45,8 @@ public:
 	int					getY(void) const;
 	char				getChar(void) const;
 	AEntities *			getMissile(void) const;
+
+	static int			loopCount;
 };
 
 #endif

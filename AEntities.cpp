@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 16:54:26 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 18:24:38 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,10 @@ char			AEntities::getChar(void) const
 
 bool			AEntities::impact(AEntities * entity) const
 {
-	// t_entity * tmp = entity;
-	// while (tmp)
-	// {
-		if ((_x == entity->_x) && (_y == entity->_y))
-			return (true);
-	// 	tmp = tmp->next;
-	// }
+	// printw("%d %d\n", _x, _y);
+	// printw("%d %d\n", entity->_x, entity->_y);
+	if ((_x == entity->_x) && (_y == entity->_y))
+		return (true);
 	return (false);
 }
 
@@ -73,3 +70,5 @@ AEntities *			AEntities::getMissile(void) const
 {
 	return (_missile);
 }
+
+int					AEntities::loopCount = 0;
