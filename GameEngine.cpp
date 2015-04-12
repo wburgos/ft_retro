@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 19:44:35 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 20:10:30 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool				GameEngine::render(void)
 	if (AEntities::loopCount == 2)
 		AEntities::loopCount = 0;
 	AEntities::loopCount++;
-	if (rand() % 200 < 5)
+	if (rand() % 300 < 5)
 	{
 		int enY = rand() % _winheight;
 		addEntity(new Enemy(_win, _winwidth, (enY == 0) ? 1 : enY));
@@ -130,13 +130,16 @@ void				GameEngine::entityColision(void)
 		{
 			if (_entities[i] && _entities[j] && _entities[i]->impact(_entities[j]))
 			{
-				_score += 10;
+				_score += 50;
 				deleteEntity(_entities[i]);
 				deleteEntity(_entities[j]);
 			}
 		}
 		if (_entities[i] && _entities[i]->getX() < 0)
+		{
+			_score -= 10;
 			deleteEntity(_entities[i]);
+		}
 	}
 }
 
@@ -145,4 +148,4 @@ WINDOW const *		GameEngine::getWindow(void) const
 	return (_win);
 }
 
-unsigned int GameEngine::_score = 0;
+int GameEngine::_score = 0;
