@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 11:00:48 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 12:18:08 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ GameEngine		&GameEngine::operator=(GameEngine const &src)
 
 bool				GameEngine::render(void)
 {
-	_p1->update();
+	usleep(10000);
+	_input = getch();
+	_p1->setInput(_input);
 	updateEntities();
 	refresh();
 	return (true);
@@ -69,6 +71,18 @@ AEntities * 		GameEngine::getEntity(int n) const
 		return (tmp->entity);
 	}
 	return (0);
+}
+
+void				GameEngine::printEntities(void)
+{
+	t_entities *	tmp = _entities;
+
+	while (tmp)
+	{
+		printw("%d\n", tmp->entity->getX());
+		printw("%d\n", tmp->entity->getY());
+		tmp = tmp->next;
+	}
 }
 
 int					GameEngine::addEntity(AEntities * entity)
@@ -109,6 +123,10 @@ void				GameEngine::updateEntities(void)
 {
 	t_entities *	tmp = _entities;
 
+	_p1->update();
+	if (_p1->getInput() == ' ')
+		addEntity(_p1->shoot());
+	// printEntities();
 	while (tmp)
 	{
 		tmp->entity->update();

@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 11:01:12 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 12:06:26 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GAMEENGINE_HPP
 
 # include <ncurses.h>
+# include <unistd.h>
 # include "Player.hpp"
 
 class GameEngine
@@ -28,6 +29,7 @@ public:
 	AEntities *				getEntity(int n) const;
 	int						addEntity(AEntities * entity);
 	WINDOW const *			getWindow(void) const;
+	void					printEntities(void);
 
 private:
 	GameEngine(GameEngine const &src);
@@ -45,6 +47,7 @@ private:
 	Player *				_p1;
 	t_entities *			_entities;
 	int						_nbEntities;
+	int						_input;
 };
 
 #endif

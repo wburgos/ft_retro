@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 10:34:56 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 12:03:28 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ class AEntities
 
 		AEntities &operator=(AEntities const & rhs);
 
-		// virtual void	movement() = 0;
-		virtual void	die() = 0;
+		virtual void	movement() = 0;
 		virtual void	update() = 0;
 
 		bool			impact(AEntities const & e1) const;

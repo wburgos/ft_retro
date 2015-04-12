@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 10:35:49 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 12:03:55 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Enemy: public AEntities
 		Enemy(Enemy const &src);
 		Enemy			&operator=(Enemy const &rhs);
 
-		void	die(void);
 		void	update(void);
 		// void movement(void);
 

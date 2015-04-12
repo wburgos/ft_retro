@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 09:44:33 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 12:02:51 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,16 @@ class Player : public AEntities
 		~Player(void);
 		Player(Player const &src);
 
-		Player		&operator=(Player const &rhs);
+		Player			&operator=(Player const &rhs);
 
-		void		die(void);
-		void		movement(int input);
-		void		shoot(void) const;
-		void		update(void);
+		bool			die(void);
+		void			movement(void);
+		void			update(void);
+		AEntities *		shoot(void);
 
-		int			getLife(void) const;
+		int				getLife(void) const;
+		void			setInput(int input);
+		int				getInput(void) const;
 
 	private:
 		Player(void);
