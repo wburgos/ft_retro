@@ -6,7 +6,7 @@
 /*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 21:06:45 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 21:11:39 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ private:
 	int							_winwidth;
 	Player *					_p1;
 	AEntities *					_entities[ENTITIES_MAX];
-	static unsigned int			_score;
+	static int					_score;
 };
 
 #endif
