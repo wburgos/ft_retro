@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 22:30:48 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 23:10:46 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Enemy		&Enemy::operator=(Enemy const &rhs)
 	return *this;
 }
 
-Enemy::Enemy(WINDOW const * win, int x, int y): AEntities(win, x, y, '#')
+Enemy::Enemy(WINDOW const * win, int x, int y): AEntities(win, x, y, '#', CYAN)
 {
 }
 

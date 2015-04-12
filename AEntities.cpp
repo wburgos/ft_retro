@@ -6,14 +6,14 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 22:31:09 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 23:13:53 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AEntities.hpp"
 
-AEntities::AEntities(WINDOW const * win, int x, int y, char caract):
-_win(win), _x(x), _y(y), _char(caract), _missile(0)
+AEntities::AEntities(WINDOW const * win, int x, int y, char caract, int color):
+_win(win), _x(x), _y(y), _char(caract), _missile(0), _color(color)
 {
 	getmaxyx(_win, _winheight, _winwidth);
 	refresh();
@@ -25,7 +25,7 @@ AEntities::~AEntities(void)
 }
 
 AEntities::AEntities(AEntities const & src) :
-_win(src._win), _x(src._x), _y(src._y), _char(src._char), _missile(0)
+_win(src._win), _x(src._x), _y(src._y), _char(src._char), _missile(0), _color(src._color)
 {
 }
 
@@ -42,7 +42,9 @@ AEntities		&AEntities::operator=(AEntities const & src)
 
 void			AEntities::draw(void)
 {
+	attron(COLOR_PAIR(_color));
 	mvaddch(_y, _x, _char);
+	attroff(COLOR_PAIR(_color));
 }
 
 void			AEntities::del(void)

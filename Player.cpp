@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 22:28:11 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 23:10:09 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Player		&Player::operator=(Player const &rhs)
 	return (*this);
 }
 
-Player::Player(WINDOW const * win, int x, int y) : AEntities(win, x, y, '>')
+Player::Player(WINDOW const * win, int x, int y) : AEntities(win, x, y, '>', RED)
 {
 }
 

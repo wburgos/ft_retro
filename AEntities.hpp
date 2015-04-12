@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 22:08:41 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 23:16:08 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 #include <iostream>
 #include <ncurses.h>
+
+# define RED 1
+# define YELLOW 2
+# define CYAN 3
+# define WHITE 4
 
 class AEntities
 {
@@ -27,10 +32,11 @@ protected:
 	int					_winwidth, _winheight;
 	char				_char;
 	AEntities * 		_missile;
+	int					_color;
 
 public:
 
-	AEntities(WINDOW const * win, int x, int y, char caract);
+	AEntities(WINDOW const * win, int x, int y, char caract, int color);
 	virtual ~AEntities(void);
 	AEntities(AEntities const &src);
 

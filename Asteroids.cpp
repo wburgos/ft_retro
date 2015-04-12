@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/12 20:19:44 by wburgos           #+#    #+#             */
-/*   Updated: 2015/04/12 22:30:55 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 23:10:36 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Asteroids		&Asteroids::operator=(Asteroids const &rhs)
 	return *this;
 }
 
-Asteroids::Asteroids(WINDOW const * win, int x, int y): AEntities(win, x, y, 'O')
+Asteroids::Asteroids(WINDOW const * win, int x, int y): AEntities(win, x, y, 'O', YELLOW)
 {
 }
 

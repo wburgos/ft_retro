@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 22:52:37 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 23:15:11 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ GameEngine::GameEngine(void)
 	keypad(stdscr, TRUE);
 	noecho();
 	curs_set(0);
+	start_color();
+	init_pair(1, COLOR_RED, COLOR_BLACK);
+	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(3, COLOR_CYAN, COLOR_BLACK);
+	init_pair(4, COLOR_WHITE, COLOR_BLACK);
 	getmaxyx(stdscr, _winheight, _winwidth);
 	_p1 = new Player(stdscr, 0, _winheight / 2);
 	_win = stdscr;
@@ -101,14 +106,12 @@ bool				GameEngine::updateEntities(void)
 	_p1->del();
 	_p1->update();
 	addEntity(_p1->getMissile());
-	// _p1->draw();
 	for (int i = 0; i < ENTITIES_MAX; i++)
 	{
 		if (_entities[i])
 		{
 			_entities[i]->del();
 			_entities[i]->update();
-			// _entities[i]->draw();
 			addEntity(_entities[i]->getMissile());
 		}
 	}
