@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 15:32:55 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 16:30:38 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ Enemy::Enemy(Enemy const &src): AEntities(src)
 
 void				Enemy::shoot(void)
 {
-	if (rand() % 100 < 25)
-		_missile = new Missiles(_win, _x + 2, _y, -1);
+	_missile = new Missiles(_win, _x - 3, _y, -1);
 }
 
 void				Enemy::movement(void)
 {
 	mvaddch(_y, _x, ' ');
-	_x += -1;
+	_x -= 1;
 	mvaddch(_y, _x, _char);
 	move(0, 0);
 }
@@ -51,5 +50,7 @@ void				Enemy::movement(void)
 void				Enemy::update(void)
 {
 	_missile = 0;
+	if (rand() % 100 < 5)
+		shoot();
 	movement();
 }

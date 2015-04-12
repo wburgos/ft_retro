@@ -6,44 +6,46 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 15:00:15 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 16:48:56 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENTITIES_HPP
-# define ENTITIES_HPP
+#ifndef A_ENTITIES_HPP
+# define A_ENTITIES_HPP
 
 #include <iostream>
 #include <ncurses.h>
 
 class AEntities
 {
-	public:
-		AEntities(WINDOW const * win, int x, int y, char caract);
-		virtual ~AEntities(void);
-		AEntities(AEntities const &src);
+private:
+	AEntities(void);
 
-		AEntities &operator=(AEntities const & rhs);
+protected:
+	WINDOW const *		_win;
+	int					_x, _y;
+	int					_winwidth, _winheight;
+	char				_char;
+	AEntities * 		_missile;
+	static int			_loopCount;
 
-		virtual void		movement() = 0;
-		virtual void		update() = 0;
+public:
 
-		bool				impact(AEntities const * e1) const;
+	AEntities(WINDOW const * win, int x, int y, char caract);
+	virtual ~AEntities(void);
+	AEntities(AEntities const &src);
 
-		int					getX(void) const;
-		int					getY(void) const;
-		char				getChar(void) const;
-		AEntities *			getMissile(void) const;
+	AEntities &operator=(AEntities const & rhs);
 
-	protected:
-		WINDOW const *		_win;
-		int					_x, _y;
-		int					_winwidth, _winheight;
-		char				_char;
-		AEntities * 		_missile;
+	virtual void		movement() = 0;
+	virtual void		update(void) = 0;
 
-	private:
-		AEntities(void);
+	bool				impact(AEntities * entities) const;
+
+	int					getX(void) const;
+	int					getY(void) const;
+	char				getChar(void) const;
+	AEntities *			getMissile(void) const;
 };
 
 #endif

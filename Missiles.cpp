@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Missiles.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:08:14 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 14:17:31 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 16:30:47 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Missiles.hpp"
 
 Missiles::Missiles(WINDOW const * win, int x, int y, int direction):
-AEntities(win, x, y, '*'), _direction(direction)
+AEntities(win, x, y, '-'), _direction(direction)
 {
 }
 

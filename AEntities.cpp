@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 15:00:33 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 16:54:26 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,15 @@ char			AEntities::getChar(void) const
 	return (_char);
 }
 
-bool			AEntities::impact(AEntities const * e1) const
+bool			AEntities::impact(AEntities * entity) const
 {
-	if ((_x == e1->_x) && (_y == e1->_y))
-		return (true);
+	// t_entity * tmp = entity;
+	// while (tmp)
+	// {
+		if ((_x == entity->_x) && (_y == entity->_y))
+			return (true);
+	// 	tmp = tmp->next;
+	// }
 	return (false);
 }
 
