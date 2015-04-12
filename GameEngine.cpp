@@ -6,7 +6,7 @@
 /*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 00:23:47 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 03:16:22 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ GameEngine		&GameEngine::operator=(GameEngine const &rhs)
 	return *this = rhs;
 }
 
-GameEngine::GameEngine(void)
+GameEngine::GameEngine(Player *p1, Enemy *e1): _p1(p1), _e1(e1)
 {
 	_height = 0;
 	_width = 0;
@@ -34,11 +34,65 @@ GameEngine::GameEngine(void)
 	WINDOW	*localWin;
 
 	localWin = newwin(_height, _width, _startY, _startX);
-	box(localWin, 0 , 0);		 //0, 0 gives default characters for the vertical and horizontal lines
-	// wborder(_win, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h');
+	box(localWin, 0 , 1);
 	wrefresh(localWin);
-
 	_win = localWin;
+	wmove(_win, _p1->getX(), _p1->getY());
+	wrefresh(_win);
+}
+
+void		GameEngine::fresh(void)
+{
+	box(_win, 0 , 1);
+	wrefresh(_win);
+}
+
+void		GameEngine::move(int *ch)
+{
+
+	int x = _p1->getX();
+	int y = _p1->getY();
+	printw("x = %d",(*ch));
+	switch(*ch)
+		{
+			case 260:
+				wclear(_win);
+				wmove(_win, x, y--);
+				wrefresh(_win);
+				_p1->setY(y);
+				GameEngine::fresh();
+				if (_p1->impact(_e1) == 1)
+					_p1->die();
+				break;
+			case 261:
+				wclear(_win);
+				wmove(_win, x, y++);
+				wrefresh(_win);
+				_p1->setY(y);
+				GameEngine::fresh();
+				if (_p1->impact(_e1) == 1)
+					_p1->die();
+				break;
+			case 259:
+				wclear(_win);
+				wmove(_win, x--, y);
+				wrefresh(_win);
+				_p1->setX(x);
+				GameEngine::fresh();
+				if (_p1->impact(_e1) == 1)
+					_p1->die();
+				break;
+			case 258:
+				wclear(_win);
+				wmove(_win, x++, y);
+				wrefresh(_win);
+				_p1->setX(x);
+				GameEngine::fresh();
+				if (_p1->impact(_e1) == 1)
+					_p1->die();
+				break;	
+		}
+	printw("x = %d, y = %d",x, y );
 }
 
 GameEngine::~GameEngine(void)
@@ -50,29 +104,6 @@ GameEngine::~GameEngine(void)
 GameEngine::GameEngine(GameEngine const &src)
 {
 	*this = src;
-}
-
-void		GameEngine::createNewWin(void)
-{
-
-}
-
-void		GameEngine::destroyWin(void)
-{
-	wborder(_win, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h');
-	/* The parameters taken are
-	 * 1. win: the window on which to operate
-	 * 2. ls: character to be used for the left side of the window
-	 * 3. rs: character to be used for the right side of the window
-	 * 4. ts: character to be used for the top side of the window
-	 * 5. bs: character to be used for the bottom side of the window
-	 * 6. tl: character to be used for the top left corner of the window
-	 * 7. tr: character to be used for the top right corner of the window
-	 * 8. bl: character to be used for the bottom left corner of the window
-	 * 9. br: character to be used for the bottom right corner of the window
-	 */
-	wrefresh(_win);
-	delwin(_win);
 }
 
 WINDOW		*GameEngine::getWindow(void)

@@ -6,7 +6,7 @@
 /*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/11 19:57:37 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 02:56:20 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ Enemy::~Enemy(void)
 }
 
 Enemy::Enemy(Enemy const &src): AEntities(src)
+{
+
+}
+
+void	Enemy::die()
 {
 
 }

@@ -6,7 +6,7 @@
 /*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/11 20:02:56 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 03:06:33 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ AEntities		&AEntities::operator=(AEntities const &rhs)
 	return *this;
 }
 
+void				AEntities::setX(int nb)
+{
+	this->_x += nb;
+}
+
+void				AEntities::setY(int nb)
+{
+	this->_y += nb;
+}
+
 int				AEntities::getX(void) const
 {
 	return this->_x;
@@ -50,9 +60,9 @@ char			AEntities::getChar(void) const
 	return this->_char;
 }
 
-bool			AEntities::impact(AEntities const &src) const
+bool			AEntities::impact(AEntities const *e1) const
 {
-	if ((this->_x == src._x) && (this->_y == src._y))
+	if ((this->_x == e1->_x) && (this->_y == e1->_y))
 		return true;
 	return false;
 }

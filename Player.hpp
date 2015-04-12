@@ -6,7 +6,7 @@
 /*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/11 19:56:56 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 02:55:48 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Player : public AEntities{
 		~Player(void);
 		Player(Player const &src);
 		Player		&operator=(Player const &rhs);
-		// virtual		void die();
+		void 		die();
 		// virtual		void move();
 		int			getLife(void) const;
 	private:

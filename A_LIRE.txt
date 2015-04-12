@@ -1,0 +1,36 @@
+Le constructor de GameEngine prend 2 paras :
+- 1 pointeur sur Playeur.
+- 1 pointeur sur Enemy.
+- voir 3 pour le missile.
+
+La fonction move(int *ch) de GameEngine():
+260 <-
+261 ->
+258 ^
+259 v
+
+wclear(win) efface la fenetre.
+
+wmove(win, x, y) permet de mettre le curseur ou l on veux dans la fenetre.
+
+wrefresh(win) refresh l ecran avec la modif de wmove().
+
+setY(y) remplace la valeur modif suite a l avancement.
+f
+resh() pour que a chaque changement le contour de la fenetre soit bien réafficher
+	mettre cette fonction. le 0 et le 1 sont des decoration par default.
+
+if impact(e1) return 1
+	alors die() supprime 1 point de life a p1 et si life est a 0 alors on stop 
+		la parti.
+
+
+BUG
+
+move()
+	Quand le curseur avance il avance tout droit meme si on fait <- 
+
+???? comprend pas lol
+	Entities.cpp:30:24: error: definition of implicitly declared copy assignment operator
+	AEntities               &AEntities::operator=(AEntities const &rhs)
+

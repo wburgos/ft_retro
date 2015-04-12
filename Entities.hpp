@@ -6,7 +6,7 @@
 /*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/11 20:03:14 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 03:06:15 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ class AEntities{
 		AEntities(int x, int y, char caract);
 		~AEntities(void);
 		AEntities(AEntities const &src);
-		AEntities &operator=(AEntities const &rhs);
+		AEntities &operator=(AEntities const *rhs);
 		// virtual void	move() = 0;
-		// virtual void	die() = 0;
-		bool			impact(AEntities const &src) const;
+		virtual void	die() = 0;
+		bool			impact(AEntities const *e1) const;
 		int				getX(void) const;
 		int				getY(void) const;
+		void			setY(int nb);
+		void			setX(int nb);
 		char			getChar(void) const;
 
 	protected:
