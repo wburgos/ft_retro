@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 08:44:54 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 10:35:59 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ Enemy::~Enemy(void)
 }
 
 Enemy::Enemy(Enemy const &src): AEntities(src)
+{
+
+}
+
+void	Enemy::update(void)
 {
 
 }

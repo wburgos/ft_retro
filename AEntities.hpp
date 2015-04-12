@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 09:12:43 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 10:34:56 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@ class AEntities
 {
 	public:
 		AEntities(WINDOW * win, int x, int y, char caract);
-		~AEntities(void);
+		virtual ~AEntities(void);
 		AEntities(AEntities const &src);
 
 		AEntities &operator=(AEntities const & rhs);
 
-		// virtual void	move() = 0;
+		// virtual void	movement() = 0;
 		virtual void	die() = 0;
+		virtual void	update() = 0;
+
 		bool			impact(AEntities const & e1) const;
+
 		int				getX(void) const;
 		int				getY(void) const;
 		void			setY(int nb);
@@ -37,6 +40,7 @@ class AEntities
 	protected:
 		WINDOW *		_win;
 		int				_x, _y;
+		int				_winwidth, _winheight;
 		char			_char;
 
 	private:

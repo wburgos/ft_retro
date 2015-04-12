@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 09:12:55 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 10:25:08 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 AEntities::AEntities(WINDOW * win, int x, int y, char caract): _win(win), _x(x), _y(y), _char(caract)
 {
-	std::cout << caract << " is called " << _x << "/" << _y << " position" << std::endl;
+	getmaxyx(_win, _winheight, _winwidth);
+	mvaddch(_y, _x, _char);
+	refresh();
+	move(0, 0);
 }
 
 AEntities::~AEntities(void)
 {
-
+	mvdelch(_y, _x);
 }
 
 AEntities::AEntities(AEntities const & src) : _win(src._win), _x(src._x), _y(src._y), _char(src._char)

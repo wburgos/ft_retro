@@ -6,23 +6,21 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 09:21:19 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 10:27:04 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Player.hpp"
+#include "Missiles.hpp"
 
 Player		&Player::operator=(Player const &rhs)
 {
 	AEntities::operator=(rhs);
-	return *this;
+	return (*this);
 }
 
 Player::Player(WINDOW * win, int x, int y) : AEntities(win, x, y, '>'), _life(3)
 {
-	mvaddch(_y, _x, _char);
-	move(0, 0);
-	refresh();
 }
 
 Player::~Player(void)
@@ -37,7 +35,7 @@ Player::Player(Player const &src): AEntities(src), _life(3)
 
 int				Player::getLife(void) const
 {
-	return _life;
+	return (_life);
 }
 
 void			Player::die(void)
@@ -50,24 +48,33 @@ void			Player::die(void)
 	}
 }
 
-void			Player::update(void)
+void			Player::shoot(void) const
 {
-	int winX, winY;
-	int ch = getch();
+	Missiles *missile = new Missiles(_win, _x + 2, _y, 1);
+	missile->movement();
+}
 
-	getmaxyx(_win, winY, winX);
-	if (ch == KEY_DOWN || ch == KEY_UP || ch == KEY_LEFT || ch == KEY_RIGHT)
-	{
-		mvdelch(_y, _x);
-		if (ch == KEY_UP && _y > 0)
-			_y--;
-		else if (ch == KEY_DOWN && _y < winY - 1)
-			_y++;
-		else if (ch == KEY_LEFT && _x > 0)
-			_x -= 2;
-		else if (ch == KEY_RIGHT && _x < winX - 2)
-			_x += 2;
-	}
+void			Player::movement(int input)
+{
+	mvdelch(_y, _x);
+	if (input == KEY_UP && _y > 0)
+		_y--;
+	else if (input == KEY_DOWN && _y < _winheight - 1)
+		_y++;
+	else if (input == KEY_LEFT && _x > 0)
+		_x--;
+	else if (input == KEY_RIGHT && _x < _winwidth - 2)
+		_x++;
 	mvaddch(_y, _x, _char);
 	move(0, 0);
+}
+
+void			Player::update(void)
+{
+	_input = getch();
+
+	if (_input == KEY_DOWN || _input == KEY_UP || _input == KEY_LEFT || _input == KEY_RIGHT)
+		movement(_input);
+	if (_input == ' ')
+		shoot();
 }
