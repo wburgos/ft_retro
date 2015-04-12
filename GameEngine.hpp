@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 19:33:55 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 19:37:43 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ private:
 	int							_winwidth;
 	Player *					_p1;
 	AEntities *					_entities[ENTITIES_MAX];
+	static unsigned int			_score;
 };
 
 #endif

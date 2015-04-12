@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 19:35:03 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 19:45:52 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,10 @@ Player::Player(Player const &src): AEntities(src)
 
 }
 
-// int				Player::getLife(void) const
-// {
-// 	return (_life);
-// }
-
-// bool			Player::die(void)
-// {
-// 	if (_life > 0)
-// 		_life--;
-// 	if (_life == 0)
-// 		return (true);
-// 	return (false);
-// }
-
 void			Player::movement(void)
 {
 	mvaddch(_y, _x, ' ');
-	if (_input == KEY_UP && _y > 0)
+	if (_input == KEY_UP && _y > 1)
 		_y--;
 	else if (_input == KEY_DOWN && _y < _winheight - 1)
 		_y++;
@@ -77,13 +63,3 @@ void			Player::update(void)
 	if (_input == ' ')
 		shoot();
 }
-
-// void			Player::setInput(int input)
-// {
-// 	_input = input;
-// }
-
-// int				Player::getInput(void) const
-// {
-// 	return (_input);
-// }
