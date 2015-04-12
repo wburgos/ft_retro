@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 17:22:55 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 17:24:25 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,6 @@ GameEngine::GameEngine(void)
 
 GameEngine::~GameEngine(void)
 {
-	// t_entities *	tmp = _entities;
-	// t_entities *	prev = tmp;
-
-	// while (tmp)
-	// {
-	// 	delete tmp->entity;
-	// 	tmp->entity = 0;
-	// 	tmp = tmp->next;
-	// 	delete prev;
-	// 	prev = tmp;
-	// }
-	// delete _p1;
 	endwin();
 }
 
@@ -65,60 +53,11 @@ bool				GameEngine::render(void)
 
 AEntities * 		GameEngine::getEntity(int n) const
 {
-	// if (_nbEntities > 0 && n >= 0 && n < _nbEntities)
-	// {
-	// 	t_entities * tmp = _entities;
-	// 	for (int i = 0; i < n; i++)
-	// 		tmp = tmp->next;
-	// 	return (tmp->entity);
-	// }
 	return (_entities[n]);
 }
 
-// void				GameEngine::printEntities(void)
-// {
-// 	t_entities *	tmp = _entities;
-
-// 	while (tmp)
-// 	{
-// 		printw("%d\n", tmp->entity->getX());
-// 		printw("%d\n", tmp->entity->getY());
-// 		tmp = tmp->next;
-// 	}
-// }
-
 void				GameEngine::addEntity(AEntities * entity)
 {
-	// if (!entity)
-	// 	return (_nbEntities);
-
-	// t_entities *	tmp;
-
-	// tmp = _entities;
-	// if (!tmp)
-	// {
-	// 	tmp = new t_entities;
-	// 	tmp->entity = entity;
-	// 	tmp->next = 0;
-	// 	_entities = tmp;
-	// 	_nbEntities++;
-	// }
-	// else
-	// {
-	// 	while (tmp->next)
-	// 	{
-	// 		if (tmp->entity == entity)
-	// 			break ;
-	// 		tmp = tmp->next;
-	// 	}
-	// 	if (tmp->entity == entity)
-	// 		return (_nbEntities);
-	// 	tmp->next = new t_entities;
-	// 	tmp->next->entity = entity;
-	// 	tmp->next->next = 0;
-	// 	_nbEntities++;
-	// }
-	// return (_nbEntities);
 	for (int i = 0; i < ENTITIES_MAX; i++)
 	{
 		if (_entities[i] == 0)
@@ -128,16 +67,8 @@ void				GameEngine::addEntity(AEntities * entity)
 
 void				GameEngine::updateEntities(void)
 {
-	// t_entities *	tmp = _entities;
-
 	_p1->update();
 	addEntity(_p1->getMissile());
-	// while (tmp)
-	// {
-	// 	tmp->entity->update();
-	// 	addEntity(tmp->entity->getMissile());
-	// 	tmp = tmp->next;
-	// }
 	for (int i = 0; i < ENTITIES_MAX; i++)
 	{
 		if (_entities[i])
@@ -151,33 +82,6 @@ void				GameEngine::updateEntities(void)
 
 void				GameEngine::deleteEntity(AEntities * entity)
 {
-	// if (!_entities)
-	// 	return ;
-
-	// t_entities *	tmp = _entities;
-
-	// if (_entities->entity == entity)
-	// {
-	// 	_entities = _entities->next;
-	// 	delete tmp->entity;
-	// 	delete tmp;
-	// 	return ;
-	// }
-
-	// t_entities *	prev = tmp;
-
-	// while (tmp)
-	// {
-	// 	if (tmp->entity == entity)
-	// 	{
-	// 		prev->next = tmp->next;
-	// 		delete tmp->entity;
-	// 		delete tmp;
-	// 		return ;
-	// 	}
-	// 	prev = tmp;
-	// 	tmp = tmp->next;
-	// }
 	for (int i = 0; i < ENTITIES_MAX; i++)
 	{
 		if (_entities[i] == entity)
@@ -187,15 +91,6 @@ void				GameEngine::deleteEntity(AEntities * entity)
 
 void				GameEngine::colisionManager(void)
 {
-	// t_entities *	node = _entities;
-	// while (node)
-	// {
-	// 	if (node->entity->impact(node->next))
-	// 	{
-	// 		deleteEntity(node->entity);
-	// 	}
-	// 	node = node->next;
-	// }
 	for (int i = 0; i < ENTITIES_MAX; i++)
 	{
 		if (_entities[i])
