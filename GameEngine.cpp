@@ -51,7 +51,7 @@ bool				GameEngine::render(void)
 	if (AEntities::loopCount == 2)
 		AEntities::loopCount = 0;
 	AEntities::loopCount++;
-	if (rand() % 200 < 5)
+	if (rand() % GameEngine::i < 5)
 	{
 		int enY = rand() % _winheight;
 		addEntity(new Enemy(_win, _winwidth, (enY == 0) ? 1 : enY));
@@ -135,7 +135,7 @@ void				GameEngine::entityColision(void)
 				deleteEntity(_entities[j]);
 			}
 		}
-		if (_entities[i] && _entities[i]->getX() < 0)
+		if (_entities[i] && (_entities[i]->getX() < 0 || _entities[i]->getX() > 3000))
 			deleteEntity(_entities[i]);
 	}
 }
@@ -145,4 +145,5 @@ WINDOW const *		GameEngine::getWindow(void) const
 	return (_win);
 }
 
+int			GameEngine::i = 200;
 unsigned int GameEngine::_score = 0;

@@ -12,6 +12,7 @@
 
 #include "Player.hpp"
 #include "Missiles.hpp"
+#include "GameEngine.hpp"
 
 Player		&Player::operator=(Player const &rhs)
 {
@@ -60,6 +61,6 @@ void			Player::update(void)
 
 	if (_input == KEY_DOWN || _input == KEY_UP || _input == KEY_LEFT || _input == KEY_RIGHT)
 		movement();
-	if (_input == ' ')
+	if ((_input == ' ' && GameEngine::i != 3) || GameEngine::i == 1 )
 		shoot();
 }

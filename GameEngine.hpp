@@ -19,7 +19,7 @@
 # include "Player.hpp"
 # include "Enemy.hpp"
 
-# define ENTITIES_MAX 1000
+# define ENTITIES_MAX 3000
 
 class GameEngine
 {
@@ -34,7 +34,7 @@ public:
 	void					addEntity(AEntities * entity);
 	WINDOW const *			getWindow(void) const;
 	void					printEntities(void);
-
+	static int							i;
 private:
 	GameEngine(GameEngine const &src);
 	GameEngine	&operator=(GameEngine const &src);

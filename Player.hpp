@@ -32,6 +32,7 @@ class Player : public AEntities
 		Player(void);
 
 		int			_input;
+		int			_i;
 };
 
 #endif
