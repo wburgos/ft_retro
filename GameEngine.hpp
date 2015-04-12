@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:06:26 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 14:10:38 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ public:
 private:
 	GameEngine(GameEngine const &src);
 	GameEngine	&operator=(GameEngine const &src);
+
+	void					colisionManager(void);
+	void					deleteEntity(AEntities * entity);
 
 	typedef struct			s_entities
 	{

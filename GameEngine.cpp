@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:18:08 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 14:12:52 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,60 @@ void				GameEngine::updateEntities(void)
 	{
 		tmp->entity->update();
 		tmp = tmp->next;
+	}
+}
+
+void				GameEngine::deleteEntity(AEntities * entity)
+{
+	if (!_entities)
+		return ;
+
+	t_entities *	tmp = _entities;
+
+	if (_entities->entity == entity)
+	{
+		_entities = _entities->next;
+		delete tmp->entity;
+		delete tmp;
+		return ;
+	}
+
+	t_entities *	prev = tmp;
+
+	while (tmp)
+	{
+		if (tmp->entity == entity)
+		{
+			prev->next = tmp->next;
+			delete tmp->entity;
+			delete tmp;
+			tmp = prev->next;
+		}
+		prev = tmp;
+		tmp = tmp->next;
+	}
+}
+
+void				GameEngine::colisionManager(void)
+{
+	t_entities *	node = _entities;
+
+	while (node)
+	{
+		t_entities *	nextNodes = node->next;
+		if (!nextNodes)
+			return ;
+		while (nextNodes)
+		{
+			if (node->entity->impact(nextNodes->entity))
+			{
+				mvaddch(node->entity->getY(), node->entity->getX(), ' ');
+				mvaddch(nextNodes->entity->getY(), nextNodes->entity->getX(), ' ');
+				deleteEntity(node->entity);
+				deleteEntity(nextNodes->entity);
+			}
+		}
+		node = node->next;
 	}
 }
 

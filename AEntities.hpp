@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:03:28 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 14:12:32 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,10 @@ class AEntities
 		virtual void	movement() = 0;
 		virtual void	update() = 0;
 
-		bool			impact(AEntities const & e1) const;
+		bool			impact(AEntities const * e1) const;
 
 		int				getX(void) const;
 		int				getY(void) const;
-		void			setY(int nb);
-		void			setX(int nb);
 		char			getChar(void) const;
 
 	protected:

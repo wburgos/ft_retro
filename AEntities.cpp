@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 10:25:08 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 14:12:27 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,6 @@ AEntities		&AEntities::operator=(AEntities const & src)
 	return (*this);
 }
 
-void				AEntities::setX(int nb)
-{
-	_x += nb;
-}
-
-void				AEntities::setY(int nb)
-{
-	_y += nb;
-}
-
 int				AEntities::getX(void) const
 {
 	return (_x);
@@ -65,9 +55,9 @@ char			AEntities::getChar(void) const
 	return (_char);
 }
 
-bool			AEntities::impact(AEntities const & e1) const
+bool			AEntities::impact(AEntities const * e1) const
 {
-	if ((_x == e1._x) && (_y == e1._y))
+	if ((_x == e1->_x) && (_y == e1->_y))
 		return (true);
 	return (false);
 }
