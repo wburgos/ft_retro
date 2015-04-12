@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 22:16:48 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 22:52:37 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ GameEngine::~GameEngine(void)
 {
 	delete _p1;
 	endwin();
+	std::cout << "Game over. Score: " << GameEngine::_score << std::endl;
 }
 
 GameEngine::GameEngine(GameEngine const &src) :
