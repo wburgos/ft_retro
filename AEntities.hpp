@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AEntities.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:03:28 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 14:00:11 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class AEntities
 {
 	public:
-		AEntities(WINDOW * win, int x, int y, char caract);
+		AEntities(WINDOW const * win, int x, int y, char caract);
 		virtual ~AEntities(void);
 		AEntities(AEntities const &src);
 
@@ -37,7 +37,7 @@ class AEntities
 		char			getChar(void) const;
 
 	protected:
-		WINDOW *		_win;
+		WINDOW const *		_win;
 		int				_x, _y;
 		int				_winwidth, _winheight;
 		char			_char;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Player.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:02:51 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 13:58:19 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Player : public AEntities
 {
 	public:
-		Player(WINDOW * win, int x, int y);
+		Player(WINDOW const * win, int x, int y);
 		~Player(void);
 		Player(Player const &src);
 

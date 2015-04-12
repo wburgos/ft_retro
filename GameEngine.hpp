@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GameEngine.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:06:26 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 13:55:49 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <ncurses.h>
 # include <unistd.h>
 # include "Player.hpp"
+# include "Enemy.hpp"
+# include <cstdlib>
 
 class GameEngine
 {

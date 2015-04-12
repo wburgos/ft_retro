@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Player.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:14:02 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 13:58:36 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Player		&Player::operator=(Player const &rhs)
 	return (*this);
 }
 
-Player::Player(WINDOW * win, int x, int y) : AEntities(win, x, y, '>'), _life(3)
+Player::Player(WINDOW const * win, int x, int y) : AEntities(win, x, y, '>'), _life(3)
 {
 }
 

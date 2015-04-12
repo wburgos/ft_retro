@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:11:14 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 14:17:40 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ Enemy		&Enemy::operator=(Enemy const &rhs)
 	return *this;
 }
 
-Enemy::Enemy(WINDOW * win): AEntities(win, 10, 10, '<')
+Enemy::Enemy(WINDOW const * win, int x, int y): AEntities(win, x, y, '=')
 {
-
+	(void)x;
+	(void)y;
 }
 
 Enemy::~Enemy(void)
@@ -33,7 +34,21 @@ Enemy::Enemy(Enemy const &src): AEntities(src)
 
 }
 
-void	Enemy::update(void)
+AEntities *		Enemy::shoot(void)
 {
+	AEntities * missile = new Missiles(_win, _x + 2, _y, 1);
+	return (missile);
+}
 
+void				Enemy::movement(void)
+{
+	mvaddch(_y, _x, ' ');
+	_x += -1;
+	mvaddch(_y, _x, _char);
+	move(0, 0);
+}
+
+void				Enemy::update(void)
+{
+	movement();
 }

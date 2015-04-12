@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GameEngine.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:18:08 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 14:17:07 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ GameEngine::~GameEngine(void)
 		delete prev;
 		prev = tmp;
 	}
+	delete _p1;
 	endwin();
 }
 
@@ -56,6 +57,8 @@ bool				GameEngine::render(void)
 	usleep(10000);
 	_input = getch();
 	_p1->setInput(_input);
+	if (rand() % 100 < 10)
+		addEntity(new Enemy(_win,_winwidth ,rand() % _winheight));
 	updateEntities();
 	refresh();
 	return (true);
@@ -126,12 +129,15 @@ void				GameEngine::updateEntities(void)
 	_p1->update();
 	if (_p1->getInput() == ' ')
 		addEntity(_p1->shoot());
-	// printEntities();
+	if (rand() % 100 < 25)
+		addEntity(getEntity(rand() % _nbEntities)->shoot());
+	// printEntities(); 
 	while (tmp)
 	{
 		tmp->entity->update();
 		tmp = tmp->next;
 	}
+
 }
 
 WINDOW const *		GameEngine::getWindow(void) const

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   AEntities.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 10:25:08 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 13:59:46 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AEntities.hpp"
 
-AEntities::AEntities(WINDOW * win, int x, int y, char caract): _win(win), _x(x), _y(y), _char(caract)
+AEntities::AEntities(WINDOW const * win, int x, int y, char caract): _win(win), _x(x), _y(y), _char(caract)
 {
 	getmaxyx(_win, _winheight, _winwidth);
 	mvaddch(_y, _x, _char);
