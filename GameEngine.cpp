@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 18:43:06 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 19:10:42 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ GameEngine::GameEngine(void)
 	nodelay(stdscr, TRUE);
 	keypad(stdscr, TRUE);
 	noecho();
+	curs_set(0);
 	getmaxyx(stdscr, _winheight, _winwidth);
 	_p1 = new Player(stdscr, 0, _winheight / 2);
 	_win = stdscr;
@@ -44,11 +45,11 @@ GameEngine		&GameEngine::operator=(GameEngine const &src)
 
 bool				GameEngine::render(void)
 {
-	usleep(10000);
+	usleep(15000);
 	if (AEntities::loopCount == 2)
 		AEntities::loopCount = 0;
 	AEntities::loopCount++;
-	if (rand() % 500 < 5)
+	if (rand() % 200 < 5)
 		addEntity(new Enemy(_win, _winwidth, (rand() % _winheight)));
 	updateEntities();
 	refresh();
@@ -93,7 +94,10 @@ void				GameEngine::deleteEntity(AEntities * entity)
 	{
 		if ( _entities[i] == entity)
 		{
-			// delete _entities[i];
+			mvaddch(_entities[i]->getY(), _entities[i]->getX(), ' ');
+			if (_entities[i])
+				delete _entities[i];
+			// mvaddch(_entities[i]->getY(), _entities[i]->getX(), 'O');
 			_entities[i] = 0;
 			return ;
 		}

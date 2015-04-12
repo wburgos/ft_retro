@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 18:24:38 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 19:00:40 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ bool			AEntities::impact(AEntities * entity) const
 {
 	// printw("%d %d\n", _x, _y);
 	// printw("%d %d\n", entity->_x, entity->_y);
-	if ((_x == entity->_x) && (_y == entity->_y))
+	if (((_x == entity->_x) && (_y == entity->_y)) || ((_x == entity->_x - 1) && (_y == entity->_y)))
 		return (true);
 	return (false);
 }
