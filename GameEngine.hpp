@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 14:10:38 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 15:08:08 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <ncurses.h>
 # include <unistd.h>
 # include "Player.hpp"
+# include "Enemy.hpp"
+# include <cstdlib>
 
 class GameEngine
 {
@@ -35,7 +37,7 @@ private:
 	GameEngine(GameEngine const &src);
 	GameEngine	&operator=(GameEngine const &src);
 
-	void					colisionManager(void);
+	void					colisionManager(AEntities * entity);
 	void					deleteEntity(AEntities * entity);
 
 	typedef struct			s_entities
@@ -50,7 +52,6 @@ private:
 	Player *				_p1;
 	t_entities *			_entities;
 	int						_nbEntities;
-	int						_input;
 };
 
 #endif

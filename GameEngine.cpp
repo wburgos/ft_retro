@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 14:12:52 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 15:12:02 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ GameEngine::~GameEngine(void)
 		delete prev;
 		prev = tmp;
 	}
+	delete _p1;
 	endwin();
 }
 
@@ -53,9 +54,8 @@ GameEngine		&GameEngine::operator=(GameEngine const &src)
 
 bool				GameEngine::render(void)
 {
-	usleep(10000);
-	_input = getch();
-	_p1->setInput(_input);
+	// usleep(10000);
+	addEntity(new Enemy(_win, _winwidth, (rand() % _winheight)));
 	updateEntities();
 	refresh();
 	return (true);
@@ -124,12 +124,11 @@ void				GameEngine::updateEntities(void)
 	t_entities *	tmp = _entities;
 
 	_p1->update();
-	if (_p1->getInput() == ' ')
-		addEntity(_p1->shoot());
-	// printEntities();
+	addEntity(_p1->getMissile());
 	while (tmp)
 	{
 		tmp->entity->update();
+		addEntity(tmp->entity->getMissile());
 		tmp = tmp->next;
 	}
 }
@@ -165,26 +164,22 @@ void				GameEngine::deleteEntity(AEntities * entity)
 	}
 }
 
-void				GameEngine::colisionManager(void)
+void				GameEngine::colisionManager(AEntities * entity)
 {
 	t_entities *	node = _entities;
 
+	if (!node)
+		return ;
+
 	while (node)
 	{
-		t_entities *	nextNodes = node->next;
-		if (!nextNodes)
-			return ;
-		while (nextNodes)
+		if (entity->impact(node->entity))
 		{
-			if (node->entity->impact(nextNodes->entity))
-			{
-				mvaddch(node->entity->getY(), node->entity->getX(), ' ');
-				mvaddch(nextNodes->entity->getY(), nextNodes->entity->getX(), ' ');
-				deleteEntity(node->entity);
-				deleteEntity(nextNodes->entity);
-			}
+			mvaddch(entity->getY(), entity->getX(), ' ');
+			mvaddch(node->entity->getY(), node->entity->getX(), ' ');
+			deleteEntity(entity);
+			deleteEntity(node->entity);
 		}
-		node = node->next;
 	}
 }
 

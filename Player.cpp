@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:14:02 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 15:07:54 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Player		&Player::operator=(Player const &rhs)
 	return (*this);
 }
 
-Player::Player(WINDOW * win, int x, int y) : AEntities(win, x, y, '>'), _life(3)
+Player::Player(WINDOW const * win, int x, int y) : AEntities(win, x, y, '>'), _life(3)
 {
 }
 
@@ -62,24 +62,27 @@ void			Player::movement(void)
 	move(0, 0);
 }
 
-AEntities *		Player::shoot(void)
+void			Player::shoot(void)
 {
-	AEntities * missile = new Missiles(_win, _x + 2, _y, 1);
-	return (missile);
+	_missile = new Missiles(_win, _x + 2, _y, 1);
 }
 
 void			Player::update(void)
 {
+	_input = getch();
+
 	if (_input == KEY_DOWN || _input == KEY_UP || _input == KEY_LEFT || _input == KEY_RIGHT)
 		movement();
+	if (_input == ' ')
+		shoot();
 }
 
-void			Player::setInput(int input)
-{
-	_input = input;
-}
+// void			Player::setInput(int input)
+// {
+// 	_input = input;
+// }
 
-int				Player::getInput(void) const
-{
-	return (_input);
-}
+// int				Player::getInput(void) const
+// {
+// 	return (_input);
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 18:19:49 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:12:02 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 13:54:24 by lrenoud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 int	main(int, char **)
 {
+	srand(time(0));
 	GameEngine		game;
 
 	while (game.render())

@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:08:14 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 12:04:08 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 14:41:23 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Missiles: public AEntities
 {
 	public:
-		Missiles(WINDOW * win, int x, int y, int direction);
+		Missiles(WINDOW const * win, int x, int y, int direction);
 		~Missiles(void);
 		Missiles(Missiles const &src);
 		Missiles			&operator=(Missiles const &rhs);
