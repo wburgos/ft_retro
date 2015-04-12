@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 18:30:04 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 19:35:03 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Player		&Player::operator=(Player const &rhs)
 	return (*this);
 }
 
-Player::Player(WINDOW const * win, int x, int y) : AEntities(win, x, y, '>'), _life(3)
+Player::Player(WINDOW const * win, int x, int y) : AEntities(win, x, y, '>')
 {
 }
 
@@ -28,24 +28,24 @@ Player::~Player(void)
 
 }
 
-Player::Player(Player const &src): AEntities(src), _life(3)
+Player::Player(Player const &src): AEntities(src)
 {
 
 }
 
-int				Player::getLife(void) const
-{
-	return (_life);
-}
+// int				Player::getLife(void) const
+// {
+// 	return (_life);
+// }
 
-bool			Player::die(void)
-{
-	if (_life > 0)
-		_life--;
-	if (_life == 0)
-		return (true);
-	return (false);
-}
+// bool			Player::die(void)
+// {
+// 	if (_life > 0)
+// 		_life--;
+// 	if (_life == 0)
+// 		return (true);
+// 	return (false);
+// }
 
 void			Player::movement(void)
 {

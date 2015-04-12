@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 19:10:42 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 19:34:24 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ GameEngine::GameEngine(void)
 
 GameEngine::~GameEngine(void)
 {
+	delete _p1;
 	endwin();
 }
 
@@ -51,7 +52,8 @@ bool				GameEngine::render(void)
 	AEntities::loopCount++;
 	if (rand() % 200 < 5)
 		addEntity(new Enemy(_win, _winwidth, (rand() % _winheight)));
-	updateEntities();
+	if (!updateEntities())
+		return (false);
 	refresh();
 	return (true);
 }
@@ -73,7 +75,7 @@ void				GameEngine::addEntity(AEntities * entity)
 	}
 }
 
-void				GameEngine::updateEntities(void)
+bool				GameEngine::updateEntities(void)
 {
 	_p1->update();
 	addEntity(_p1->getMissile());
@@ -85,7 +87,10 @@ void				GameEngine::updateEntities(void)
 			addEntity(_entities[i]->getMissile());
 		}
 	}
-	colisionManager();
+	if (playerColision())
+		return (false);
+	entityColision();
+	return (true);
 }
 
 void				GameEngine::deleteEntity(AEntities * entity)
@@ -94,9 +99,9 @@ void				GameEngine::deleteEntity(AEntities * entity)
 	{
 		if ( _entities[i] == entity)
 		{
-			mvaddch(_entities[i]->getY(), _entities[i]->getX(), ' ');
 			if (_entities[i])
 				delete _entities[i];
+			mvaddch(_entities[i]->getY(), _entities[i]->getX(), ' ');
 			// mvaddch(_entities[i]->getY(), _entities[i]->getX(), 'O');
 			_entities[i] = 0;
 			return ;
@@ -104,7 +109,17 @@ void				GameEngine::deleteEntity(AEntities * entity)
 	}
 }
 
-void				GameEngine::colisionManager(void)
+bool				GameEngine::playerColision(void)
+{
+	for (int i = 0; i < ENTITIES_MAX; i++)
+	{
+		if (_entities[i] && _p1->impact(_entities[i]))
+			return (true);
+	}
+	return (false);
+}
+
+void				GameEngine::entityColision(void)
 {
 	for (int i = 0; i < ENTITIES_MAX; i++)
 	{

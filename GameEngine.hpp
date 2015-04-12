@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 17:20:41 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 19:33:55 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	~GameEngine(void);
 
 	bool					render(void);
-	void					updateEntities(void);
+	bool					updateEntities(void);
 
 	AEntities *				getEntity(int n) const;
 	void					addEntity(AEntities * entity);
@@ -39,7 +39,8 @@ private:
 	GameEngine(GameEngine const &src);
 	GameEngine	&operator=(GameEngine const &src);
 
-	void					colisionManager(void);
+	bool					playerColision(void);
+	void					entityColision(void);
 	void					deleteEntity(AEntities * entity);
 
 	WINDOW const *				_win;
