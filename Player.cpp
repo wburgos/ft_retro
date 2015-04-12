@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 08:48:09 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 09:14:40 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ Player		&Player::operator=(Player const &rhs)
 	return *this;
 }
 
-Player::Player(WINDOW * win) : AEntities(win, 40, 0, '>'), _life(3)
+Player::Player(WINDOW * win, int x, int y) : AEntities(win, x, y, '>'), _life(3)
 {
-
+	mvaddch(_y, _x, _char);
+	move(0, 0);
+	refresh();
 }
 
 Player::~Player(void)
@@ -46,4 +48,23 @@ void			Player::die(void)
 	{
 		std::cout << " mort" <<std::endl;
 	}
+}
+
+void			Player::update(void)
+{
+	int ch = getch();
+	if (ch == KEY_DOWN || ch == KEY_UP || ch == KEY_LEFT || ch == KEY_RIGHT)
+	{
+		mvdelch(_y, _x);
+		if (ch == KEY_DOWN)
+			_y++;
+		else if (ch == KEY_UP)
+			_y--;
+		else if (ch == KEY_LEFT)
+			_x -= 2;
+		else if (ch == KEY_RIGHT)
+			_x += 2;
+	}
+	mvaddch(_y, _x, _char);
+	move(0, 0);
 }

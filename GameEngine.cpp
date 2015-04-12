@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 08:49:46 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 09:09:10 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ GameEngine::GameEngine(void)
 	keypad(stdscr, TRUE);
 	noecho();
 	getmaxyx(stdscr, _height, _width);
-	_p1 = new Player(stdscr);
+	_p1 = new Player(stdscr, 0, _height / 2);
 	_win = stdscr;
 }
 
@@ -42,14 +42,8 @@ GameEngine		&GameEngine::operator=(GameEngine const &src)
 
 void				GameEngine::render(void)
 {
-	mvaddch(_height / 2, 0, _p1->getChar());
-	move(0, 0);
+	_p1->update();
 	refresh();
-}
-
-void				GameEngine::acquireInput(void)
-{
-	_input = getch();
 }
 
 int					GameEngine::getInput(void) const

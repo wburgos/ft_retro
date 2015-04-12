@@ -6,13 +6,13 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 08:47:21 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 09:12:55 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AEntities.hpp"
 
-AEntities::AEntities(WINDOW const * win, int x, int y, char caract): _win(win), _x(x), _y(y), _char(caract)
+AEntities::AEntities(WINDOW * win, int x, int y, char caract): _win(win), _x(x), _y(y), _char(caract)
 {
 	std::cout << caract << " is called " << _x << "/" << _y << " position" << std::endl;
 }

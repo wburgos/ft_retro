@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 08:45:28 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 09:12:43 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class AEntities
 {
 	public:
-		AEntities(WINDOW const * win, int x, int y, char caract);
+		AEntities(WINDOW * win, int x, int y, char caract);
 		~AEntities(void);
 		AEntities(AEntities const &src);
 
@@ -35,7 +35,7 @@ class AEntities
 		char			getChar(void) const;
 
 	protected:
-		WINDOW const *	_win;
+		WINDOW *		_win;
 		int				_x, _y;
 		char			_char;
 
