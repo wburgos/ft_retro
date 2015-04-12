@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Player.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 02:56:11 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 08:48:09 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Player		&Player::operator=(Player const &rhs)
 	return *this;
 }
 
-Player::Player(void): AEntities(40, 0, '@'), _life(3)
+Player::Player(WINDOW * win) : AEntities(win, 40, 0, '>'), _life(3)
 {
 
 }
@@ -35,14 +35,14 @@ Player::Player(Player const &src): AEntities(src), _life(3)
 
 int				Player::getLife(void) const
 {
-	return this->_life;
+	return _life;
 }
 
 void			Player::die(void)
 {
 	if (_life > 0)
-		this->_life--;
-	if (this->_life == 0)
+		_life--;
+	if (_life == 0)
 	{
 		std::cout << " mort" <<std::endl;
 	}

@@ -3,32 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 18:19:49 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 03:19:31 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 08:24:30 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "GameEngine.hpp"
 #include "Player.hpp"
 #include "Enemy.hpp"
-#include <ncurses.h>
 #include <iostream>
 
 int	main(int, char **)
 {
-	int ch = 0;
-	Player		*p1 = new Player;
-	Enemy		*e1 = new Enemy;
-	GameEngine	win(p1, e1);
-	for (;;)
+	GameEngine		game;
+
+	while(game.getInput() != 'Q' && game.getInput() != 'q')
 	{
-		if((ch = getch()) == 27)
-			break ;
-		win.move(&ch);
+		game.render();
+		game.acquireInput();
 	}
-	// delete p1;
-	// delete e1;
 	return 0;
 }

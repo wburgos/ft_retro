@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 02:56:20 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 08:44:54 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Enemy		&Enemy::operator=(Enemy const &rhs)
 	return *this;
 }
 
-Enemy::Enemy(void): AEntities(10, 10, '#')
+Enemy::Enemy(WINDOW * win): AEntities(win, 10, 10, '#')
 {
 
 }

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Entities.hpp                                       :+:      :+:    :+:   */
+/*   AEntities.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrenoud- <lrenoud-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 03:06:15 by lrenoud-         ###   ########.fr       */
+/*   Updated: 2015/04/12 08:45:28 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENTITIES_HPP
 # define ENTITIES_HPP
-#include <iostream>
 
-class AEntities{
+#include <iostream>
+#include <ncurses.h>
+
+class AEntities
+{
 	public:
-		AEntities(int x, int y, char caract);
+		AEntities(WINDOW const * win, int x, int y, char caract);
 		~AEntities(void);
 		AEntities(AEntities const &src);
-		AEntities &operator=(AEntities const *rhs);
+
+		AEntities &operator=(AEntities const & rhs);
+
 		// virtual void	move() = 0;
 		virtual void	die() = 0;
-		bool			impact(AEntities const *e1) const;
+		bool			impact(AEntities const & e1) const;
 		int				getX(void) const;
 		int				getY(void) const;
 		void			setY(int nb);
@@ -30,8 +35,9 @@ class AEntities{
 		char			getChar(void) const;
 
 	protected:
-		int		_x, _y;
-		char	_char;
+		WINDOW const *	_win;
+		int				_x, _y;
+		char			_char;
 
 	private:
 		AEntities(void);
