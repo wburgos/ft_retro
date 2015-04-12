@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:17:39 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 20:21:50 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 22:15:50 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,13 @@
 # include "Player.hpp"
 # include "Enemy.hpp"
 # include "Asteroids.hpp"
+# include <fstream>
 
-# define ENTITIES_MAX 1000
+# define ENTITIES_MAX	1000
+# define EASY			100
+# define HARD			8
+# define DODGE			3
+# define CHEAT			1
 
 class GameEngine
 {
@@ -31,10 +36,12 @@ public:
 	bool					render(void);
 	bool					updateEntities(void);
 
+	void					drawEntities(void);
 	AEntities *				getEntity(int n) const;
 	void					addEntity(AEntities * entity);
 	WINDOW const *			getWindow(void) const;
 	void					printEntities(void);
+	static int							i;
 
 private:
 	GameEngine(GameEngine const &src);

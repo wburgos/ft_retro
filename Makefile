@@ -6,7 +6,7 @@
 #    By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/11 17:07:19 by lrenoud-          #+#    #+#              #
-#    Updated: 2015/04/12 18:16:26 by wburgos          ###   ########.fr        #
+#    Updated: 2015/04/12 22:16:53 by wburgos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ rwildcard		=    $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2)\
 					$(filter $(subst *,%,$2),$d))
 
 COMPILER		=    clang++
-CFLAGS			=    -Wall -Wextra -Werror -I .. -c -g3
+CFLAGS			=    -Wall -Wextra -Werror -I .. -c -O3
 LFLAGS			=    -lncurses
 
 OBJ_DIR			=    objs

@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 19:28:45 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 22:31:09 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ AEntities::AEntities(WINDOW const * win, int x, int y, char caract):
 _win(win), _x(x), _y(y), _char(caract), _missile(0)
 {
 	getmaxyx(_win, _winheight, _winwidth);
-	mvaddch(_y, _x, _char);
 	refresh();
-	move(0, 0);
 }
 
 AEntities::~AEntities(void)
 {
-	mvdelch(_y, _x);
+	del();
 }
 
 AEntities::AEntities(AEntities const & src) :
@@ -41,6 +39,17 @@ AEntities		&AEntities::operator=(AEntities const & src)
 	}
 	return (*this);
 }
+
+void			AEntities::draw(void)
+{
+	mvaddch(_y, _x, _char);
+}
+
+void			AEntities::del(void)
+{
+	mvaddch(_y, _x, ' ');
+}
+
 
 int				AEntities::getX(void) const
 {

@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 19:32:16 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 22:08:41 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ public:
 
 	virtual void		movement() = 0;
 	virtual void		update(void) = 0;
+
+	void				draw(void);
+	void				del(void);
 
 	bool				impact(AEntities * entities) const;
 

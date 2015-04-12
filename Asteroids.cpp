@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/12 20:19:44 by wburgos           #+#    #+#             */
-/*   Updated: 2015/04/12 21:10:47 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 22:30:55 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,11 @@ Asteroids::Asteroids(Asteroids const &src): AEntities(src)
 
 void				Asteroids::movement(void)
 {
-	mvaddch(_y, _x, ' ');
 	_x -= 1;
-	mvaddch(_y, _x, _char);
-	move(0, 0);
 }
 
 void				Asteroids::update(void)
 {
-	if (AEntities::loopCount == 1)
+	if (AEntities::loopCount % 2)
 		movement();
 }

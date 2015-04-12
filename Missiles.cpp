@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 20:08:14 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 19:32:02 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 22:30:16 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ Missiles &			Missiles::operator=(Missiles const &rhs)
 
 void				Missiles::movement(void)
 {
-	mvaddch(_y, _x, ' ');
 	_x += _direction;
-	mvaddch(_y, _x, _char);
-	move(0, 0);
 }
 
 void				Missiles::update(void)

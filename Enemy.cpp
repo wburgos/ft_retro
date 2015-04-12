@@ -6,7 +6,7 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 20:22:35 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 22:30:48 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,14 @@ void				Enemy::shoot(void)
 
 void				Enemy::movement(void)
 {
-	mvaddch(_y, _x, ' ');
 	_x -= 1;
-	mvaddch(_y, _x, _char);
-	move(0, 0);
 }
 
 void				Enemy::update(void)
 {
 	_missile = 0;
 
-	if (AEntities::loopCount == 1)
+	if (AEntities::loopCount % 2)
 		movement();
 	else if (rand() % 500 < 5)
 		shoot();

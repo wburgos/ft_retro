@@ -6,12 +6,13 @@
 /*   By: wburgos <wburgos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/11 17:56:10 by lrenoud-          #+#    #+#             */
-/*   Updated: 2015/04/12 19:52:57 by wburgos          ###   ########.fr       */
+/*   Updated: 2015/04/12 22:28:11 by wburgos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Player.hpp"
 #include "Missiles.hpp"
+#include "GameEngine.hpp"
 
 Player		&Player::operator=(Player const &rhs)
 {
@@ -35,7 +36,6 @@ Player::Player(Player const &src): AEntities(src)
 
 void			Player::movement(void)
 {
-	mvaddch(_y, _x, ' ');
 	if (_input == KEY_UP && _y > 1)
 		_y--;
 	else if (_input == KEY_DOWN && _y < _winheight - 1)
@@ -44,7 +44,6 @@ void			Player::movement(void)
 		_x--;
 	else if (_input == KEY_RIGHT && _x < _winwidth - 2)
 		_x++;
-	mvaddch(_y, _x, _char);
 	move(0, 0);
 }
 
@@ -60,6 +59,6 @@ void			Player::update(void)
 
 	if (_input == KEY_DOWN || _input == KEY_UP || _input == KEY_LEFT || _input == KEY_RIGHT)
 		movement();
-	if (_input == ' ')
+	if ((_input == ' ' && GameEngine::i != DODGE) || GameEngine::i == CHEAT)
 		shoot();
 }
